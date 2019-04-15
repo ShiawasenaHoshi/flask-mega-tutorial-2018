@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Етить-колотить, у нас бага!</h1>
+    <p>Тыжпрограммист уже разбужен и летит на помощь</p>
+    <img src="{{url_for('static', filename='error.jpg')}}"/>
+    <p><a href="{{ url_for('index') }}">Back</a></p>
+{% endblock %}
