@@ -125,7 +125,7 @@ def unfollow(username):
         return redirect(url_for('user', username=username))
     current_user.unfollow(user)
     db.session.commit()
-    flash(_('You are not following %(username)', username=username))
+    flash(_('You are not following %(username)s', username=username))
     return redirect(url_for('user', username=username))
 
 @app.route('/explore')
