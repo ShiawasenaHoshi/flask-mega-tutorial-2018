@@ -5,6 +5,8 @@ https://habr.com/ru/post/346306/
 2) add venv in project settings
 3) fix dependencies
 
+FIXME: CLI from lesson 13 don't work!
+
 Debug & UnitTests in PyCharm:
 https://blog.miguelgrinberg.com/post/setting-up-a-flask-application-in-pycharm
 
@@ -32,4 +34,5 @@ Set the name of the configuration to tests of something similar. In the Target f
 
 After you close the configurations window, the dropdown in the top right of the PyCharm window will have tests selected. You can use this dropdown to go back to the webapp configuration when you need to. With tests selected, you can click the green run button to run your unit tests. PyCharm detects you are running tests, so it uses a dedicated panel in the bottom portion of the window to show you how the tests are doing. Any tests that fail will be displayed, and if you click on each one you can see the output it produced. You can also opt to run the tests under the debugger by clicking the green bug button, and that gives you the power to set breakpoints and run a specific part of a test step by step.
 
-PyCharm also adds a little run button on the sidebar, next to each unit test function or method, and this is extremely convenient, as it allows you to run or debug a single test just by clicking its button. 
+PyCharm also adds a little run button on the sidebar, next to each unit test function or method, and this is extremely convenient, as it allows you to run or debug a single test just by clicking its button.
+ 

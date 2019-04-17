@@ -163,7 +163,7 @@ msgstr "Тыжпрограммист уже разбужен и летит на 
 #: app/templates/_post.html:13
 #, python-format
 msgid "%(username)s said %(when)s"
-msgstr "%(username)s в %(when)s написал"
+msgstr "%(username)s %(when)s написал"
 
 #: app/templates/base.html:4
 msgid "Welcome to Microblog"
