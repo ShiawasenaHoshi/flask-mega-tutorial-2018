@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 from datetime import datetime, timedelta
 import unittest
-from app import app, db
+
+from app import db, create_app
 from app.models import User, Post
 from config import Config
 
@@ -12,7 +13,7 @@ class TestConfig(Config):
 class UserModelCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app(TestConfig)
-        self.app_context = self.app.app_context
+        self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
 
