@@ -117,16 +117,16 @@ msgid "You cannot follow yourself!"
 msgstr "Вы не можете подписаться на себя"
 
 #: app/routes.py:112
-msgid "You are following %(username)s!"
-msgstr "Вы подписались на %(username)s"
+msgid "You are following %(username)!"
+msgstr "Вы подписались на %(username)"
 
 #: app/routes.py:124
 msgid "You cannot unfollow yourself!"
 msgstr "Вы не можете отписаться от себя"
 
 #: app/routes.py:128
-msgid "You are not following %(username)s"
-msgstr "Вы отписались от %(username)s"
+msgid "You are not following %(username)"
+msgstr "Вы отписались от %(username)""
 
 #: app/routes.py:139 app/templates/base.html:22
 msgid "Explore"
@@ -247,10 +247,4 @@ msgstr "Подписаться"
 #: app/templates/user.html:20
 msgid "Unfollow"
 msgstr "Отписаться"
-
-#~ msgid "You are following %(username)s!"
-#~ msgstr "Вы подписались на %(username)s"
-
-#~ msgid "You are not following %(username)s"
-#~ msgstr "Вы отписались от %(username)s"
 
