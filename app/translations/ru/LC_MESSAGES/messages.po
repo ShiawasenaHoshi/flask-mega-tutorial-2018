@@ -248,3 +248,9 @@ msgstr "Подписаться"
 msgid "Unfollow"
 msgstr "Отписаться"
 
+#~ msgid "You are following %(username)s!"
+#~ msgstr "Вы подписались на %(username)s"
+
+#~ msgid "You are not following %(username)s"
+#~ msgstr "Вы отписались от %(username)s"
+
