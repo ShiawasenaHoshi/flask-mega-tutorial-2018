@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 
 {% block app_content %}
     <table class="table table-hover">
@@ -22,7 +22,7 @@
         </tr>
     </table>
     {% for post in posts %}
-        {% include 'main/_post.html' %}
+        {% include '_post.html' %}
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">

@@ -1,12 +1,12 @@
 import os
 import click
 
+
 def register(app):
     @app.cli.group()
     def translate():
         """Translation and localization commands."""
         pass
-
 
     @translate.command()
     @click.argument('lang')
@@ -19,7 +19,6 @@ def register(app):
             raise RuntimeError('init command failed')
         os.remove('messages.pot')
 
-
     @translate.command()
     def update():
         """Update all languages."""
@@ -28,7 +27,6 @@ def register(app):
         if os.system('pybabel update -i messages.pot -d app/translations'):
             raise RuntimeError('update command failed')
         os.remove('messages.pot')
-
 
     @translate.command()
     def compile():

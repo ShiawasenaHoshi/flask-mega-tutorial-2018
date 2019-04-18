@@ -1,18 +1,17 @@
 from datetime import datetime
-
-from flask import render_template, redirect, url_for, flash, request, jsonify, current_app, g
-from flask_babel import _, get_locale
+from flask import render_template, flash, redirect, url_for, request, g, \
+    jsonify, current_app
 from flask_login import current_user, login_required
+from flask_babel import _, get_locale
 from guess_language import guess_language
-
 from app import db
-from app.main.forms import PostForm, EditProfileForm
+from app.main.forms import EditProfileForm, PostForm
 from app.models import User, Post
-from app.main import bp
 from app.translate import translate
+from app.main import bp
 
 
-@bp.before_request
+@bp.before_app_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
@@ -42,7 +41,7 @@ def index():
         if posts.has_next else None
     prev_url = url_for('main.index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('main/index.html', title=_('Home'), form=form,
+    return render_template('index.html', title=_('Home'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -53,16 +52,13 @@ def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('explore', page=posts.next_num) \
+    next_url = url_for('main.explore', page=posts.next_num) \
         if posts.has_next else None
-    prev_url = url_for('explore', page=posts.prev_num) \
+    prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('main/index.html', title=_('Explore'),
+    return render_template('index.html', title=_('Explore'),
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
-
-
-
 
 
 @bp.route('/user/<username>')
@@ -72,11 +68,11 @@ def user(username):
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('main.user', username=user.username, page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('main.user', username=user.username, page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template('main/user.html', user=user, posts=posts.items,
+    next_url = url_for('main.user', username=user.username,
+                       page=posts.next_num) if posts.has_next else None
+    prev_url = url_for('main.user', username=user.username,
+                       page=posts.prev_num) if posts.has_prev else None
+    return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
 
 
@@ -93,7 +89,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('main/edit_profile.html', title=_('Edit Profile'),
+    return render_template('edit_profile.html', title=_('Edit Profile'),
                            form=form)
 
 
@@ -135,3 +131,4 @@ def translate_text():
     return jsonify({'text': translate(request.form['text'],
                                       request.form['source_language'],
                                       request.form['dest_language'])})
+
