@@ -3,7 +3,10 @@ https://habr.com/ru/post/346306/
 
 1) python3 -m venv venv
 2) add venv in project settings
-3) fix dependencies
+3) pip install -r requirements.txt
+4) docker pull docker.elastic.co/elasticsearch/elasticsearch:6.4.3
+5) docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.3
+
 
 FIXME: CLI from lesson 13 don't work!
 
