@@ -6,6 +6,8 @@ https://habr.com/ru/post/346306/
 3) pip install -r requirements.txt
 4) docker pull docker.elastic.co/elasticsearch/elasticsearch:6.4.3
 5) docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.3
+6) docker run --name my-redis-container -p 6379:6379 -d redis
+7) python -m smtpd -n -c DebuggingServer localhost:8025
 
 
 FIXME: CLI from lesson 13 don't work!
